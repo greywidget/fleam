@@ -3,10 +3,22 @@ It's just an example package to test publishing to testpypi
 
 ## Publishing Notes
 - Generate a user-scoped token on TestPyPI (can't have a project-scoped one until the project exists)
-- store it as an environment variable: `export TEST_USER_PYPI_TOKEN="pypi-......"`
-- Add index configuration to `pyproject.toml`:
+- store it in a `.env` file
+- Add index configuration for testpypi to `pyproject.toml`:
 ```
-[tool.uv.indexes]
-testpypi = "https://test.pypi.org/simple/"
+[[tool.uv.index]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+publish-url = "https://test.pypi.org/legacy/"
+explicit = true
+
 ```
-- Publish like this: `uv publish --index testpypi --token $TEST_USER_PYPI_TOKEN`
+- Publish using `just` as it can load environment variables - see `justfile`
+
+## Installing from testpypi
+When I first tried this, I got issues as it tried to install **all** packages
+from testpypi, not just this one (`fleam`) and so other things such as `typer`
+either did not exist on testpypi or were an older version than required by the
+dependencies in `pyproject.toml`. I did manage to install with:  
+
+`uv add --index https://test.pypi.org/simple/ --index-strategy unsafe-best-match fleam`

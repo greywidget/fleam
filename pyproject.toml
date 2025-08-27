@@ -1,12 +1,19 @@
 [project]
 name = "fleam"
-version = "0.1.0"
+version = "0.1.7"
 description = "example package to test publishing to pypi"
 readme = "README.md"
 authors = [
     { name = "Craig Richards", email = "craig@greywidget.co.uk" }
 ]
 requires-python = ">=3.13"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+license = "MIT"
+
 dependencies = [
     "typer>=0.16.1",
 ]
@@ -17,13 +24,6 @@ fleam = "fleam.cli:app"
 [build-system]
 requires = ["uv_build>=0.8.13,<0.9.0"]
 build-backend = "uv_build"
-
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "Operating System :: OS Independent",
-]
-license = "MIT"
-license-files = ["LICEN[CS]E*"]
 
 [project.urls]
 Homepage = "https://github.com/greywidget/fleam"
