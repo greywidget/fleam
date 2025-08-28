@@ -5,4 +5,4 @@ test-env:
     @echo $env:NAME
 
 publish:
-    uv publish --index testpypi --token $env:TEST_USER_PYPI_TOKEN
+    uv publish --index testpypi --token $env:TEST_PYPI_PROJECT_TOKEN
