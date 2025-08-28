@@ -22,3 +22,9 @@ either did not exist on testpypi or were an older version than required by the
 dependencies in `pyproject.toml`. I did manage to install with:  
 
 `uv add --index https://test.pypi.org/simple/ --index-strategy unsafe-best-match fleam`
+
+The `pip` equivalent would be (according to ChatGPT):  
+`pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple fleam`
+
+You can also run `uv sync --index https://test.pypi.org/simple/ --index-strategy unsafe-best-match`
+
