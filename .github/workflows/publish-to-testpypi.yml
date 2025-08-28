@@ -27,5 +27,8 @@ jobs:
       - name: Install the project
         run: uv sync --locked --all-extras --dev
 
+      - name: Build the project
+        run: uv build
+
       - name: Publish to testpypi
         run: uv publish --index testpypi
