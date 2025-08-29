@@ -1,6 +1,6 @@
 [project]
 name = "fleam"
-version = "0.1.15"
+version = "0.1.16"
 description = "example package to test publishing to pypi"
 readme = "README.md"
 authors = [
