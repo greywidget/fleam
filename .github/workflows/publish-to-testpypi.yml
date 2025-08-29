@@ -14,18 +14,27 @@ jobs:
     strategy:
       matrix:
         python-version:
-          - "3.13.6"
-          - "3.13.7"
+          - "3.13"
     permissions:
-      id-token: write
+      id-token: write # Required for OIDC trusted publishing
 
     steps:
       - uses: actions/checkout@v4
 
+      # Install uv and Python
       - name: Install uv and set the python version
         uses: astral-sh/setup-uv@v6
         with:
           python-version: ${{ matrix.python-version }}
+
+      # Cache uv's dependency cache to speed up installs
+      - name: Cache uv cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/uv
+          key: uv-${{ runner.os }}-${{ hashFiles('uv.lock') }}
+          restore-keys: |
+            uv-${{ runner.os }}-
 
       - name: Install the project
         run: uv sync --locked --all-extras --dev
@@ -33,5 +42,7 @@ jobs:
       - name: Build the project
         run: uv build
 
-      - name: Publish to testpypi
-        run: uv publish --index testpypi
+      # Trusted Publishing to TestPyPI
+      - name: Publish to TestPyPI
+        if: github.ref == 'refs/heads/main'
+        run: uv publish --index TestPyPI

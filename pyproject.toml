@@ -1,6 +1,6 @@
 [project]
 name = "fleam"
-version = "0.1.12"
+version = "0.1.13"
 description = "example package to test publishing to pypi"
 readme = "README.md"
 authors = [
@@ -30,7 +30,7 @@ Homepage = "https://github.com/greywidget/fleam"
 Issues = "https://github.com/greywidget/fleam/issues"
 
 [[tool.uv.index]]
-name = "testpypi"
+name = "TestPyPI"
 url = "https://test.pypi.org/simple/"
 publish-url = "https://test.pypi.org/legacy/"
 explicit = true
