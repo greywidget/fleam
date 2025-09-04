@@ -23,7 +23,7 @@ jobs:
       id-token: write # Required for OIDC trusted publishing
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       # Install uv and Python
       - name: Install uv and set the python version
